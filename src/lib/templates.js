@@ -56,3 +56,16 @@ const levelTemplate = {
         }
     ]
 }
+
+
+const gameTemplate = {
+    tag: "div",
+    classNames: ["game__screen"],
+    content: [
+        {
+            tag: "div",
+            classNames: ["screen__header"],
+            content: "Игровой экран"
+        }
+    ]
+}
