@@ -1,32 +1,49 @@
 const app = document.querySelector('.app')
 
-window.addEventListener("DOMContentLoaded", () => {
+window.addEventListener('DOMContentLoaded', () => {
     application.renderScreen(app, levelTemplate, levelConfig)
 })
 
 const gameConfig = {
-    fn: [() => {}] // Пока пустая функция, чтобы ошибки в консоль не летели
+    fn: [dealCards, cardsControl],
 }
 
 const levelConfig = {
-    fn: [levelListener]
+    fn: [levelListener],
 }
 
 function levelListener() {
     const levelList = document.querySelector('.level__list')
     const startBtn = document.querySelector('.btn')
-    
 
-    levelList.addEventListener('click', ({target}) => {
-        levelList.childNodes.forEach(el => {
+    levelList.addEventListener('click', ({ target }) => {
+        levelList.childNodes.forEach((el) => {
             el.classList.remove('active')
         })
         target.parentNode.classList.add('active')
         application.level = target.dataset.value
     })
 
-    startBtn.addEventListener("click", () => {
+    startBtn.addEventListener('click', () => {
         application.renderScreen(app, gameTemplate, gameConfig)
-        console.log(application.level);
+        console.log(application.level)
     })
+}
+
+function cardsControl() {
+    const cards = document.querySelector('.cards')
+    const allCards = cards.querySelectorAll('.card')
+    allCards.forEach((card) => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('card--open')
+        })
+    })
+}
+
+function dealCards() {
+    const cards = document.querySelector('.cards')
+
+    for (let i = 0; i < 18; i++) {
+        cards.appendChild(templateEngine(cardTemplate))
+    }
 }
