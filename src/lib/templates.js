@@ -59,12 +59,57 @@ const levelTemplate = {
 
 const gameTemplate = {
     tag: 'div',
-    classNames: ['game__screen'],
+    classNames: ['gamescreen'],
     content: [
         {
             tag: 'div',
-            classNames: ['screen__header'],
-            content: 'Игровой экран',
+            classNames: ['game__header'],
+            content: [
+                {
+                    tag: 'div',
+                    classNames: ['game__timer'],
+                    content: '00.00',
+                },
+                {
+                    tag: 'button',
+                    classNames: ['btn', 'btn__restart'],
+                    content: 'Начать заново',
+                },
+            ],
+        },
+        {
+            tag: 'div',
+            classNames: ['game__board'],
+            content: [
+                {
+                    tag: 'div',
+                    classNames: ['cards'],
+                    content: '',
+                },
+            ],
+        },
+    ],
+}
+
+const cardTemplate = {
+    tag: 'div',
+    classNames: ['card__container'],
+    content: [
+        {
+            tag: 'div',
+            classNames: ['card'],
+            content: [
+                {
+                    tag: 'div',
+                    classNames: ['back'],
+                    content: '',
+                },
+                {
+                    tag: 'div',
+                    classNames: ['front'],
+                    content: '',
+                },
+            ],
         },
     ],
 }

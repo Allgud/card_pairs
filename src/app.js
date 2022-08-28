@@ -5,7 +5,7 @@ window.addEventListener('DOMContentLoaded', () => {
 })
 
 const gameConfig = {
-    fn: [() => {}], // Пока пустая функция, чтобы ошибки в консоль не летели
+    fn: [dealCards, cardsControl],
 }
 
 const levelConfig = {
@@ -28,4 +28,22 @@ function levelListener() {
         application.renderScreen(app, gameTemplate, gameConfig)
         console.log(application.level)
     })
+}
+
+function cardsControl() {
+    const cards = document.querySelector('.cards')
+    const allCards = cards.querySelectorAll('.card')
+    allCards.forEach((card) => {
+        card.addEventListener('click', () => {
+            card.classList.toggle('card--open')
+        })
+    })
+}
+
+function dealCards() {
+    const cards = document.querySelector('.cards')
+
+    for (let i = 0; i < 18; i++) {
+        cards.appendChild(templateEngine(cardTemplate))
+    }
 }

@@ -94,3 +94,88 @@
     cursor: pointer;
     border: none;
 }
+
+.gamescreen {
+    width: 1020px;
+    padding: 40px 20px;
+}
+
+.game__header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.game__timer {
+    font-weight: 400;
+    font-size: 64px;
+    line-height: 72px;
+    color: var(--color-white);
+    position: relative;
+}
+
+.game__timer::before,
+.game__timer::after { 
+    font-size: 16px;
+    line-height: 32px;
+    position: absolute; 
+    top: -20px;
+}
+
+.game__timer::before {
+    content: "min";
+    left: 40px;
+}
+
+.game__timer::after {
+    content: "sec";
+    right: 5px;
+}
+
+.cards {
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 15px;
+    row-gap: 15px;
+    padding-top: 15px;
+}
+
+.card__container {
+    width: 95px;
+    height: 133px;
+    border-radius: 4px;
+    perspective: 1200px;
+}
+
+.card {
+    
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    transform-style: preserve-3d;
+    transition: all 0.8s ease;
+}
+
+.front,
+.back {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;    
+}
+
+.card--open {
+    transform: rotateY(-180deg);
+}
+
+.front {
+    background: url("./assets/король_пики.png") no-repeat center/cover;
+    transform: rotateY(-180deg);
+}
+
+.back {
+    background: url("./assets/рубашка.png") no-repeat center/cover;
+}
