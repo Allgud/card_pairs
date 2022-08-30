@@ -1,4 +1,4 @@
-const levelTemplate = {
+export const levelTemplate = {
     tag: 'div',
     classNames: ['level__choice'],
     content: [
@@ -57,7 +57,7 @@ const levelTemplate = {
     ],
 }
 
-const gameTemplate = {
+export const gameTemplate = {
     tag: 'div',
     classNames: ['gamescreen'],
     content: [
@@ -91,7 +91,7 @@ const gameTemplate = {
     ],
 }
 
-const cardTemplate = {
+export const cardTemplate = {
     tag: 'div',
     classNames: ['card__container'],
     content: [

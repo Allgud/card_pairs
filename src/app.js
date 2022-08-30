@@ -1,3 +1,9 @@
+import { templateEngine } from './lib/template-engine'
+import { levelTemplate, gameTemplate, cardTemplate } from './lib/templates'
+import application from './lib/application'
+import dificultLevel from './lib/helpers'
+import '../src/style.css'
+
 const app = document.querySelector('.app')
 
 window.addEventListener('DOMContentLoaded', () => {
@@ -43,7 +49,7 @@ function cardsControl() {
 function dealCards() {
     const cards = document.querySelector('.cards')
 
-    for (let i = 0; i < 18; i++) {
+    for (let i = 0; i < dificultLevel[application.level]; i++) {
         cards.appendChild(templateEngine(cardTemplate))
     }
 }

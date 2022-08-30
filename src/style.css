@@ -115,20 +115,20 @@
 }
 
 .game__timer::before,
-.game__timer::after { 
+.game__timer::after {
     font-size: 16px;
     line-height: 32px;
-    position: absolute; 
+    position: absolute;
     top: -20px;
 }
 
 .game__timer::before {
-    content: "min";
+    content: 'min';
     left: 40px;
 }
 
 .game__timer::after {
-    content: "sec";
+    content: 'sec';
     right: 5px;
 }
 
@@ -149,7 +149,6 @@
 }
 
 .card {
-    
     position: absolute;
     width: 100%;
     height: 100%;
@@ -164,7 +163,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;    
+    backface-visibility: hidden;
 }
 
 .card--open {
@@ -172,10 +171,10 @@
 }
 
 .front {
-    background: url("./assets/король_пики.png") no-repeat center/cover;
+    background: url('./assets/король_пики.png') no-repeat center/cover;
     transform: rotateY(-180deg);
 }
 
 .back {
-    background: url("./assets/рубашка.png") no-repeat center/cover;
+    background: url('./assets/рубашка.png') no-repeat center/cover;
 }
