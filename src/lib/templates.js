@@ -83,7 +83,7 @@ export const gameTemplate = {
             content: [
                 {
                     tag: 'div',
-                    classNames: ['cards'],
+                    classNames: ['cards__field'],
                     content: '',
                 },
             ],

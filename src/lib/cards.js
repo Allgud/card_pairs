@@ -1,4 +1,4 @@
-export const cards = {
+const cards = {
     0: { link: './assets/6_бубны.png' },
     1: { link: './assets/7_бубны.png' },
     2: { link: './assets/8_бубны.png' },
@@ -36,3 +36,5 @@ export const cards = {
     34: { link: './assets/король_пики.png' },
     35: { link: './assets/туз_пики.png' },
 }
+
+export default cards

@@ -1,14 +1,15 @@
 import { templateEngine } from './lib/template-engine'
 import { levelTemplate, gameTemplate, cardTemplate } from './lib/templates'
 import application from './lib/application'
-import dificultLevel from './lib/helpers'
+import { dificultLevel, getRandomNumbersArray } from './lib/helpers'
+import cards from './lib/cards'
 import '../src/style.css'
 
 const app = document.querySelector('.app')
 
-window.addEventListener('DOMContentLoaded', () => {
-    application.renderScreen(app, levelTemplate, levelConfig)
-})
+// window.addEventListener('DOMContentLoaded', () => {
+//     application.renderScreen(app, levelTemplate, levelConfig)
+// })
 
 const gameConfig = {
     fn: [dealCards, cardsControl],
@@ -32,12 +33,11 @@ function levelListener() {
 
     startBtn.addEventListener('click', () => {
         application.renderScreen(app, gameTemplate, gameConfig)
-        console.log(application.level)
     })
 }
 
 function cardsControl() {
-    const cards = document.querySelector('.cards')
+    const cards = document.querySelector('.cards__field')
     const allCards = cards.querySelectorAll('.card')
     allCards.forEach((card) => {
         card.addEventListener('click', () => {
@@ -47,9 +47,11 @@ function cardsControl() {
 }
 
 function dealCards() {
-    const cards = document.querySelector('.cards')
+    const cardsField = document.querySelector('.cards__field')
 
     for (let i = 0; i < dificultLevel[application.level]; i++) {
-        cards.appendChild(templateEngine(cardTemplate))
+        cardsField.appendChild(templateEngine(cardTemplate))
     }
 }
+
+cardsControl()
