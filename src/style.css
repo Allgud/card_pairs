@@ -212,20 +212,57 @@
     background: url("./assets/hearts.png") no-repeat center/contain;
 }
 
+
+.spade::before,
 .hearts::before {
-    content: url('./assets/hearts.png');
     position: absolute;
     top: -28px;
     left: -31px;
     transform: scale(0.3);
 }
 
+.clubs::before,
+.diamond::before {
+    position: absolute;
+    top: -28px;
+    left: -27px;
+    transform: scale(0.3);
+}
+
+.spade::after,
 .hearts::after {
-    content: url('./assets/hearts.png');
     position: absolute;
     bottom: -28px;
     right: -29px;
     transform: scale(0.3) rotate(180deg);
+}
+
+.clubs::after,
+.diamond::after {
+    position: absolute;
+    bottom: -28px;
+    right: -25px;
+    transform: scale(0.3) rotate(180deg);
+}
+
+.hearts::before,
+.hearts::after {
+    content: url('./assets/hearts.png');
+}
+
+.spade::before,
+.spade::after {
+    content: url('./assets/spade.png');
+}
+
+.clubs::before,
+.clubs::after {
+    content: url('./assets/clubs.png');
+}
+
+.diamond::before,
+.diamond::after {
+    content: url('./assets/diamond.png');
 }
 
 .rang--top {
@@ -236,7 +273,7 @@
     position: absolute;
     top: 1px;
     left: 6px;
-    letter-spacing: 0px;
+    letter-spacing: -4px;
 }
 
 .rang--bottom {
@@ -248,5 +285,5 @@
     bottom: 1px;
     right: 6px;
     transform: rotate(180deg);
-    letter-spacing: 0px;
+    letter-spacing: -4px;
 }
