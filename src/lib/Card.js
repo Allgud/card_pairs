@@ -1,7 +1,7 @@
 import { templateEngine } from './template-engine'
 
 export default class Card {
-    constructor(element, card = {}) {
+    constructor(element, card) {
         this.element = element
         this.card = card.src
         this.notation = card.notation

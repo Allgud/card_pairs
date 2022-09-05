@@ -7,10 +7,6 @@ import '../src/style.css'
 import Card from './lib/Card'
 
 const app = document.querySelector('.app')
-const objCards = [
-    { src: './assets/7_черви.png', notation: '7H' },
-    { src: './assets/7_бубны.png', notation: '7D' },
-]
 
 window.addEventListener('DOMContentLoaded', () => {
     application.renderScreen(app, levelTemplate, levelConfig)
@@ -51,13 +47,17 @@ function cardsControl() {
     })
 }
 
+function checkLevel(node, number) {
+    const level2 = dificultLevel[2]
+
+    number === level2 && node.classList.add('level2')
+}
+
 function dealCards() {
     const cardsField = document.querySelector('.cards__field')
     const number = dificultLevel[application.level]
     const randomNumbers = getRandomNumbersArray(number / 2)
-    const cardsArray = randomNumbers.forEach(
-        (num) => new Card(cardsField, cards[num])
-    )
-}
 
-cardsControl()
+    checkLevel(cardsField, number)
+    randomNumbers.forEach((num) => new Card(cardsField, cards[num]))
+}
