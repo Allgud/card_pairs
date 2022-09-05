@@ -30,3 +30,9 @@ export function getRandomNumbersArray(number) {
     const doubleArray = array1.concat(array1)
     return shuffleArray(doubleArray)
 }
+
+export function checkLevel(node, num) {
+    const level2 = dificultLevel[2]
+
+    num === level2 && node.classList.add('level2')
+}

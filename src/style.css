@@ -171,7 +171,8 @@
     backface-visibility: hidden;
 }
 
-.card--open {
+.card--open,
+.card--fixed {
     transform: rotateY(-180deg);
 }
 

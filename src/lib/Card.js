@@ -10,13 +10,16 @@ export default class Card {
 
     createCard() {
         const template = Card.template
+        const card = template.content[0]
         const front = template.content[0].content[1]
+        card.attrs = {
+            'data-note': this.notation,
+        }
         front.content = {
             tag: 'img',
             classNames: '',
             attrs: {
                 src: this.card,
-                'data-note': this.notation,
                 alt: this.notation,
             },
             content: '',

@@ -1,7 +1,6 @@
-import { templateEngine } from './lib/template-engine'
-import { levelTemplate, gameTemplate, cardTemplate } from './lib/templates'
+import { levelTemplate, gameTemplate } from './lib/templates'
 import application from './lib/application'
-import { dificultLevel, getRandomNumbersArray } from './lib/helpers'
+import { dificultLevel, getRandomNumbersArray, checkLevel } from './lib/helpers'
 import cards from './lib/cards'
 import '../src/style.css'
 import Card from './lib/Card'
@@ -12,12 +11,12 @@ window.addEventListener('DOMContentLoaded', () => {
     application.renderScreen(app, levelTemplate, levelConfig)
 })
 
-const gameConfig = {
-    fn: [dealCards, cardsControl],
-}
-
 const levelConfig = {
     fn: [levelListener],
+}
+
+const gameConfig = {
+    fn: [dealCards, showCards],
 }
 
 function levelListener() {
@@ -37,20 +36,33 @@ function levelListener() {
     })
 }
 
-function cardsControl() {
-    const allCards = document.querySelectorAll('.card')
+function cardsCompare(card) {
+    card.classList.add('card--open')
+    const currentCard = card.dataset.note
 
-    allCards.forEach((card) => {
-        card.addEventListener('click', () => {
-            card.classList.toggle('card--open')
+    if (!application.currentCard) {
+        application.currentCard = currentCard
+        return
+    }
+
+    if (application.currentCard && currentCard === application.currentCard) {
+        application.currentCard = undefined
+        const openedCards = document.querySelectorAll('.card--open')
+        openedCards.forEach((card) => {
+            card.classList.remove('card--open')
+            card.classList.add('card--fixed')
         })
-    })
-}
+        return
+    }
 
-function checkLevel(node, number) {
-    const level2 = dificultLevel[2]
-
-    number === level2 && node.classList.add('level2')
+    if (application.currentCard && currentCard !== application.currentCard) {
+        application.currentCard = undefined
+        const openedCards = document.querySelectorAll('.card--open')
+        setTimeout(() => {
+            hideCards(openedCards)
+            alert('You lose!')
+        }, 800)
+    }
 }
 
 function dealCards() {
@@ -60,4 +72,18 @@ function dealCards() {
 
     checkLevel(cardsField, number)
     randomNumbers.forEach((num) => new Card(cardsField, cards[num]))
+    cardsField.addEventListener('click', ({ target }) =>
+        cardsCompare(target.parentNode)
+    )
+}
+
+function showCards() {
+    const allCards = document.querySelectorAll('.card')
+
+    allCards.forEach((card) => card.classList.add('card--open'))
+    setTimeout(() => hideCards(allCards), 2000)
+}
+
+function hideCards(arr) {
+    arr.forEach((item) => item.classList.remove('card--open'))
 }
