@@ -4,12 +4,17 @@ import application from './lib/application'
 import { dificultLevel, getRandomNumbersArray } from './lib/helpers'
 import cards from './lib/cards'
 import '../src/style.css'
+import Card from './lib/Card'
 
 const app = document.querySelector('.app')
+const objCards = [
+    { src: './assets/7_черви.png', notation: '7H' },
+    { src: './assets/7_бубны.png', notation: '7D' },
+]
 
-// window.addEventListener('DOMContentLoaded', () => {
-//     application.renderScreen(app, levelTemplate, levelConfig)
-// })
+window.addEventListener('DOMContentLoaded', () => {
+    application.renderScreen(app, levelTemplate, levelConfig)
+})
 
 const gameConfig = {
     fn: [dealCards, cardsControl],
@@ -37,8 +42,8 @@ function levelListener() {
 }
 
 function cardsControl() {
-    const cards = document.querySelector('.cards__field')
-    const allCards = cards.querySelectorAll('.card')
+    const allCards = document.querySelectorAll('.card')
+
     allCards.forEach((card) => {
         card.addEventListener('click', () => {
             card.classList.toggle('card--open')
@@ -48,10 +53,11 @@ function cardsControl() {
 
 function dealCards() {
     const cardsField = document.querySelector('.cards__field')
-
-    for (let i = 0; i < dificultLevel[application.level]; i++) {
-        cardsField.appendChild(templateEngine(cardTemplate))
-    }
+    const number = dificultLevel[application.level]
+    const randomNumbers = getRandomNumbersArray(number / 2)
+    const cardsArray = randomNumbers.forEach(
+        (num) => new Card(cardsField, cards[num])
+    )
 }
 
 cardsControl()

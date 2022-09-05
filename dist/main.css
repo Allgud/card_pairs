@@ -1,3 +1,6 @@
+/*!*****************************************************************!*\
+  !*** css ./node_modules/css-loader/dist/cjs.js!./src/style.css ***!
+  \*****************************************************************/
 :root {
     --main-br: 12px;
     --color-dark-blue: #004980;
@@ -171,12 +174,120 @@
     transform: rotateY(-180deg);
 }
 
-.back {
-    background: url('./assets/рубашка.png') no-repeat center/cover;
-}
-
 .front {
     background-color: var(--color-white);
     transform: rotateY(-180deg);
     position: relative;
 }
+
+.back {
+    background: url(7cecdc0a37301b7c41e6.png) no-repeat center/cover;
+}
+
+.suit {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+}
+
+.clubs,
+.diamond,
+.spade,
+.hearts {
+    top: 35%;
+    left: 30%;
+}
+
+.diamond {
+    
+    background: url(b8e127b770475e54a9fd.png) no-repeat center/contain;
+}
+
+.clubs {
+    background: url(f7f3bf12ea97e55dedee.png) no-repeat center/contain;
+}
+
+.spade {
+    background: url(2ce2f05cb172148de405.png) no-repeat center/contain;
+}
+
+.hearts {
+    background: url(0d7e344df300a9f901d7.png) no-repeat center/contain;
+}
+
+
+.spade::before,
+.hearts::before {
+    position: absolute;
+    top: -28px;
+    left: -31px;
+    transform: scale(0.3);
+}
+
+.clubs::before,
+.diamond::before {
+    position: absolute;
+    top: -28px;
+    left: -27px;
+    transform: scale(0.3);
+}
+
+.spade::after,
+.hearts::after {
+    position: absolute;
+    bottom: -28px;
+    right: -29px;
+    transform: scale(0.3) rotate(180deg);
+}
+
+.clubs::after,
+.diamond::after {
+    position: absolute;
+    bottom: -28px;
+    right: -25px;
+    transform: scale(0.3) rotate(180deg);
+}
+
+.hearts::before,
+.hearts::after {
+    content: url(0d7e344df300a9f901d7.png);
+}
+
+.spade::before,
+.spade::after {
+    content: url(2ce2f05cb172148de405.png);
+}
+
+.clubs::before,
+.clubs::after {
+    content: url(f7f3bf12ea97e55dedee.png);
+}
+
+.diamond::before,
+.diamond::after {
+    content: url(b8e127b770475e54a9fd.png);
+}
+
+.rang--top {
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    position: absolute;
+    top: 1px;
+    left: 6px;
+    letter-spacing: -4px;
+}
+
+.rang--bottom {
+    font-family: inherit;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 32px;
+    position: absolute;
+    bottom: 1px;
+    right: 6px;
+    transform: rotate(180deg);
+    letter-spacing: -4px;
+}
+

@@ -90,26 +90,3 @@ export const gameTemplate = {
         },
     ],
 }
-
-export const cardTemplate = {
-    tag: 'div',
-    classNames: ['card__container'],
-    content: [
-        {
-            tag: 'div',
-            classNames: ['card'],
-            content: [
-                {
-                    tag: 'div',
-                    classNames: ['back'],
-                    content: '',
-                },
-                {
-                    tag: 'div',
-                    classNames: ['front'],
-                    content: '',
-                },
-            ],
-        },
-    ],
-}
