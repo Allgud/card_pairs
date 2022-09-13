@@ -29,7 +29,7 @@
     "lint:css": "stylelint ./src/**/*.css",
     "lint": "npm run lint:js",
     "prepare": "husky install",
-    "build": "webpack",
+    "build": "cross-env NODE_ENV=production webpack",
     "start": "webpack-dev-server --open"
   },
   "repository": {
@@ -41,5 +41,9 @@
   "bugs": {
     "url": "https://github.com/Allgud/card_pairs/issues"
   },
-  "homepage": "https://github.com/Allgud/card_pairs#readme"
+  "homepage": "https://github.com/Allgud/card_pairs#readme",
+  "dependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.0.2"
+  }
 }
