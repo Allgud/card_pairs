@@ -115,30 +115,34 @@
 }
 
 .game__timer::before,
-.game__timer::after { 
+.game__timer::after {
     font-size: 16px;
     line-height: 32px;
-    position: absolute; 
+    position: absolute;
     top: -20px;
 }
 
 .game__timer::before {
-    content: "min";
+    content: 'min';
     left: 40px;
 }
 
 .game__timer::after {
-    content: "sec";
+    content: 'sec';
     right: 5px;
 }
 
-.cards {
+.cards__field {
     width: 100%;
     display: flex;
     flex-wrap: wrap;
-    column-gap: 15px;
-    row-gap: 15px;
+    gap: 15px;
+    justify-content: space-between;
     padding-top: 15px;
+}
+
+.level2 {
+    column-gap: 60px;
 }
 
 .card__container {
@@ -149,7 +153,6 @@
 }
 
 .card {
-    
     position: absolute;
     width: 100%;
     height: 100%;
@@ -164,18 +167,19 @@
     left: 0;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;    
+    border-radius: 4px;
+    backface-visibility: hidden;
 }
 
-.card--open {
-    transform: rotateY(-180deg);
-}
-
-.front {
-    background: url("./assets/король_пики.png") no-repeat center/cover;
+.card--open,
+.card--fixed {
     transform: rotateY(-180deg);
 }
 
 .back {
-    background: url("./assets/рубашка.png") no-repeat center/cover;
+    background: url('./assets/рубашка.png') no-repeat center/cover;
+}
+
+.front {
+    transform: rotateY(-180deg);
 }

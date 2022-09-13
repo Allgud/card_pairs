@@ -1,3 +1,5 @@
+import { templateEngine } from './template-engine'
+
 const application = {
     renderScreen: function (block, template, config) {
         block.textContent = ''
@@ -6,3 +8,5 @@ const application = {
         config['fn'].forEach((fn) => fn())
     },
 }
+
+export default application

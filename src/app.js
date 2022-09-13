@@ -1,15 +1,22 @@
+import { levelTemplate, gameTemplate } from './lib/templates'
+import application from './lib/application'
+import { dificultLevel, getRandomNumbersArray, checkLevel } from './lib/helpers'
+import cards from './lib/cards'
+import '../src/style.css'
+import Card from './lib/Card'
+
 const app = document.querySelector('.app')
 
 window.addEventListener('DOMContentLoaded', () => {
     application.renderScreen(app, levelTemplate, levelConfig)
 })
 
-const gameConfig = {
-    fn: [dealCards, cardsControl],
-}
-
 const levelConfig = {
     fn: [levelListener],
+}
+
+const gameConfig = {
+    fn: [dealCards, showCards],
 }
 
 function levelListener() {
@@ -26,24 +33,57 @@ function levelListener() {
 
     startBtn.addEventListener('click', () => {
         application.renderScreen(app, gameTemplate, gameConfig)
-        console.log(application.level)
     })
 }
 
-function cardsControl() {
-    const cards = document.querySelector('.cards')
-    const allCards = cards.querySelectorAll('.card')
-    allCards.forEach((card) => {
-        card.addEventListener('click', () => {
-            card.classList.toggle('card--open')
+function cardsCompare(card) {
+    card.classList.add('card--open')
+    const currentCard = card.dataset.note
+
+    if (!application.currentCard) {
+        application.currentCard = currentCard
+        return
+    }
+
+    if (application.currentCard && currentCard === application.currentCard) {
+        application.currentCard = undefined
+        const openedCards = document.querySelectorAll('.card--open')
+        openedCards.forEach((card) => {
+            card.classList.remove('card--open')
+            card.classList.add('card--fixed')
         })
-    })
+        return
+    }
+
+    if (application.currentCard && currentCard !== application.currentCard) {
+        application.currentCard = undefined
+        const openedCards = document.querySelectorAll('.card--open')
+        setTimeout(() => {
+            hideCards(openedCards)
+            alert('You lose!')
+        }, 800)
+    }
 }
 
 function dealCards() {
-    const cards = document.querySelector('.cards')
+    const cardsField = document.querySelector('.cards__field')
+    const number = dificultLevel[application.level]
+    const randomNumbers = getRandomNumbersArray(number / 2)
 
-    for (let i = 0; i < 18; i++) {
-        cards.appendChild(templateEngine(cardTemplate))
-    }
+    checkLevel(cardsField, number)
+    randomNumbers.forEach((num) => new Card(cardsField, cards[num]))
+    cardsField.addEventListener('click', ({ target }) =>
+        cardsCompare(target.parentNode)
+    )
+}
+
+function showCards() {
+    const allCards = document.querySelectorAll('.card')
+
+    allCards.forEach((card) => card.classList.add('card--open'))
+    setTimeout(() => hideCards(allCards), 2000)
+}
+
+function hideCards(arr) {
+    arr.forEach((item) => item.classList.remove('card--open'))
 }
