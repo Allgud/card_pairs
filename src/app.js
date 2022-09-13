@@ -1,6 +1,10 @@
 import { levelTemplate, gameTemplate } from './lib/templates'
 import application from './lib/application'
-import { dificultLevel, getRandomNumbersArray, checkLevel } from './lib/helpers'
+import {
+    difficultLevel,
+    getRandomNumbersArray,
+    checkLevel,
+} from './lib/helpers'
 import cards from './lib/cards'
 import '../src/style.css'
 import Card from './lib/Card'
@@ -67,11 +71,14 @@ function cardsCompare(card) {
 
 function dealCards() {
     const cardsField = document.querySelector('.cards__field')
-    const number = dificultLevel[application.level]
-    const randomNumbers = getRandomNumbersArray(number / 2)
+    const number = difficultLevel[application.level]
+    const randomNumbers = getRandomNumbersArray(number.cards / 2)
 
-    checkLevel(cardsField, number)
-    randomNumbers.forEach((num) => new Card(cardsField, cards[num]))
+    checkLevel(cardsField, number.cards)
+    randomNumbers.forEach((num) => {
+        const newCard = new Card(cardsField, cards[num])
+        newCard.render()
+    })
     cardsField.addEventListener('click', ({ target }) =>
         cardsCompare(target.parentNode)
     )

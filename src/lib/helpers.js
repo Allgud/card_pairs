@@ -8,20 +8,21 @@ function createArray() {
 }
 
 function shuffleArray(arr) {
+    const arrCopy = arr.slice(0)
     let j, temp
-    for (let i = arr.length - 1; i > 0; i--) {
+    for (let i = arrCopy.length - 1; i > 0; i--) {
         j = Math.floor(Math.random() * (i + 1))
-        temp = arr[j]
-        arr[j] = arr[i]
-        arr[i] = temp
+        temp = arrCopy[j]
+        arrCopy[j] = arrCopy[i]
+        arrCopy[i] = temp
     }
-    return arr
+    return arrCopy
 }
 
-export const dificultLevel = {
-    1: 6,
-    2: 12,
-    3: 18,
+export const difficultLevel = {
+    easy: { cards: 6 },
+    medium: { cards: 12 },
+    hard: { cards: 18 },
 }
 
 export function getRandomNumbersArray(number) {
@@ -32,7 +33,7 @@ export function getRandomNumbersArray(number) {
 }
 
 export function checkLevel(node, num) {
-    const level2 = dificultLevel[2]
+    const level2 = difficultLevel.medium.cards
 
     num === level2 && node.classList.add('level2')
 }
