@@ -1,14 +1,8 @@
-type MapItem = {
-    cards : number
-}
+import { DiffMap } from './types'
 
-type DiffMap = {
-    easy: MapItem,
-    medium : MapItem,
-    hard: MapItem
-}
 
-const difficultLevel = {
+
+const difficultLevel: DiffMap = {
     easy: { cards: 6 },
     medium: { cards: 12 },
     hard: { cards: 18 },

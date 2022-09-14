@@ -1,4 +1,6 @@
-export const levelTemplate = {
+import { Template } from './types'
+
+export const levelTemplate: Template = {
     tag: 'div',
     classNames: ['level__choice'],
     content: [
@@ -19,7 +21,7 @@ export const levelTemplate = {
                             tag: 'button',
                             classNames: ['level__button'],
                             attrs: { 'data-value': 'easy' },
-                            content: 1,
+                            content: '1',
                         },
                     ],
                 },
@@ -31,7 +33,7 @@ export const levelTemplate = {
                             tag: 'button',
                             classNames: ['level__button'],
                             attrs: { 'data-value': 'medium' },
-                            content: 2,
+                            content: '2',
                         },
                     ],
                 },
@@ -43,7 +45,7 @@ export const levelTemplate = {
                             tag: 'button',
                             classNames: ['level__button'],
                             attrs: { 'data-value': 'hard' },
-                            content: 3,
+                            content: '3',
                         },
                     ],
                 },
