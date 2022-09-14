@@ -5,7 +5,7 @@ const application = {
         block.textContent = ''
         block.appendChild(templateEngine(template))
 
-        config['fn'].forEach((fn) => fn())
+        config.fn.forEach((fn) => fn())
     },
 }
 

@@ -1,10 +1,7 @@
 import { levelTemplate, gameTemplate } from './lib/templates'
 import application from './lib/application'
-import {
-    difficultLevel,
-    getRandomNumbersArray,
-    checkLevel,
-} from './lib/helpers'
+import { getRandomNumbersArray, checkLevel } from './lib/helpers'
+import difficultLevel from './lib/constants.ts'
 import cards from './lib/cards'
 import '../src/style.css'
 import Card from './lib/Card'

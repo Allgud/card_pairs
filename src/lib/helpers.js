@@ -1,3 +1,5 @@
+import difficultLevel from './constants.ts'
+
 const cardsCount = 36
 
 function createArray() {
@@ -17,12 +19,6 @@ function shuffleArray(arr) {
         arrCopy[i] = temp
     }
     return arrCopy
-}
-
-export const difficultLevel = {
-    easy: { cards: 6 },
-    medium: { cards: 12 },
-    hard: { cards: 18 },
 }
 
 export function getRandomNumbersArray(number) {
