@@ -18,7 +18,7 @@ export const levelTemplate = {
                         {
                             tag: 'button',
                             classNames: ['level__button'],
-                            attrs: { 'data-value': '1' },
+                            attrs: { 'data-value': 'easy' },
                             content: 1,
                         },
                     ],
@@ -30,7 +30,7 @@ export const levelTemplate = {
                         {
                             tag: 'button',
                             classNames: ['level__button'],
-                            attrs: { 'data-value': '2' },
+                            attrs: { 'data-value': 'medium' },
                             content: 2,
                         },
                     ],
@@ -42,7 +42,7 @@ export const levelTemplate = {
                         {
                             tag: 'button',
                             classNames: ['level__button'],
-                            attrs: { 'data-value': '3' },
+                            attrs: { 'data-value': 'hard' },
                             content: 3,
                         },
                     ],

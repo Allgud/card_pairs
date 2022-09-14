@@ -5,7 +5,6 @@ export default class Card {
         this.element = element
         this.card = card.src
         this.notation = card.notation
-        this.render()
     }
 
     createCard() {
