@@ -1,8 +1,8 @@
-import { DiffMap } from './types'
+import { Difficult } from './types'
 
 
 
-const difficultLevel: DiffMap = {
+const difficultLevel: Difficult = {
     easy: { cards: 6 },
     medium: { cards: 12 },
     hard: { cards: 18 },

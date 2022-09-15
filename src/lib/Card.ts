@@ -1,8 +1,7 @@
 import { templateEngine } from './template-engine';
-import { CardDesc } from './cards'
-import { Template } from './types'
+import { CardDesc, Template } from './types'
 
-export default abstract class Card {
+export default class Card {
     element: HTMLElement;
     cardObj: CardDesc | undefined;
     card: string | undefined;

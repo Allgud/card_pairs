@@ -1,10 +1,15 @@
-import { levelTemplate, gameTemplate } from './lib/templates'
+import {
+    levelTemplate,
+    gameTemplate,
+    finalScreenTemplate,
+} from './lib/templates'
 import application from './lib/application'
 import { getRandomNumbersArray, checkLevel } from './lib/helpers'
-import difficultLevel from './lib/constants.ts'
+import difficultLevel from './lib/constants'
 import cards from './lib/cards'
 import '../src/style.css'
 import Card from './lib/Card'
+import Timer from './lib/Timer'
 
 const app = document.querySelector('.app')
 
@@ -58,11 +63,7 @@ function cardsCompare(card) {
 
     if (application.currentCard && currentCard !== application.currentCard) {
         application.currentCard = undefined
-        const openedCards = document.querySelectorAll('.card--open')
-        setTimeout(() => {
-            hideCards(openedCards)
-            alert('You lose!')
-        }, 800)
+        handleTimer('stop')
     }
 }
 
@@ -85,9 +86,27 @@ function showCards() {
     const allCards = document.querySelectorAll('.card')
 
     allCards.forEach((card) => card.classList.add('card--open'))
-    setTimeout(() => hideCards(allCards), 2000)
+    setTimeout(() => {
+        hideCards(allCards)
+        handleTimer('start')
+    }, 2000)
 }
 
 function hideCards(arr) {
     arr.forEach((item) => item.classList.remove('card--open'))
+}
+
+function handleTimer(string) {
+    const minutesEl = document.querySelector('.timer__minutes')
+    const secondsEl = document.querySelector('.timer__seconds')
+
+    const timer = new Timer(minutesEl, secondsEl)
+
+    if (string === 'start') {
+        timer.start()
+    }
+
+    if (string === 'stop') {
+        timer.stop()
+    }
 }
