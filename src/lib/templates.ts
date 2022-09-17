@@ -120,7 +120,7 @@ export const finalScreenTemplate: Template = {
                 {
                     tag: 'h2',
                     classNames: ['final__title'],
-                    content: '', 
+                    content: 'Вы выиграли!', 
                 },
                 {
                     tag: 'div',

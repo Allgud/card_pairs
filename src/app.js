@@ -67,8 +67,9 @@ function cardsCompare(card) {
         application.currentCard = undefined
         handleTimer('stop')
         setTimeout(() => {
-            app.appendChild(templateEngine(createFinalTemplate('lose'))), 1000
-        })
+            app.appendChild(templateEngine(createFinalTemplate('lose')))
+            restartBtnClick()
+        }, 500)
     }
 }
 
@@ -95,7 +96,7 @@ function showCards() {
     setTimeout(() => {
         hideCards(allCards)
         handleTimer('start')
-    }, 2000)
+    }, 5000)
 }
 
 function hideCards(arr) {
@@ -111,8 +112,6 @@ function createTimer() {
 }
 
 function handleTimer(string) {
-    const { gameTime, timer } = application
-
     if (string === 'start') {
         application.timer.start()
     }
@@ -129,8 +128,9 @@ function checkAllCards(field) {
     if (allFixedCards.length === cards) {
         application.timer.stop()
         setTimeout(() => {
-            app.appendChild(templateEngine(createFinalTemplate('win'))), 1000
-        })
+            app.appendChild(templateEngine(createFinalTemplate('win')))
+            restartBtnClick()
+        }, 800)
     }
 }
 
@@ -151,4 +151,11 @@ function createFinalTemplate(status) {
     gamescreen.classList.add('opacity')
 
     return template
+}
+
+function restartBtnClick() {
+    const restartBtn = app.querySelector('.final__btn')
+    restartBtn.addEventListener('click', () => {
+        application.renderScreen(app, gameTemplate, gameConfig)
+    })
 }
