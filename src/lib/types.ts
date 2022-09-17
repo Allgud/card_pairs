@@ -1,12 +1,11 @@
+import Card from './Card'
+
 export type App = {
     renderScreen: Function,
     level?: string | ''
     currentCard?: string | '',
-    timer: {
-        minutes: string,
-        seconds: string
-    },
-    interval?: number | undefined 
+    interval?: number,
+    timer?: Function | undefined
 }
 
 export type Config = {

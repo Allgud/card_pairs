@@ -8,10 +8,6 @@ const application: App = {
 
         config.fn.forEach((fn: Function) => fn())
     },
-    timer : {
-        minutes: '',
-        seconds: ''
-    }
 }
 
 export default application

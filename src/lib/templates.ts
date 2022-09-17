@@ -115,16 +115,12 @@ export const finalScreenTemplate: Template = {
                 {
                     tag: 'img',
                     classNames: ['final__img'],
-                    attrs: {
-                        src: '../assets/win__icon.png',
-                        alt: 'Победа'
-                    },
                     content: ''
                 },
                 {
                     tag: 'h2',
                     classNames: ['final__title'],
-                    content: 'Вы выиграли!', 
+                    content: '', 
                 },
                 {
                     tag: 'div',

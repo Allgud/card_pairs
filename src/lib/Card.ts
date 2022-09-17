@@ -4,7 +4,7 @@ import { CardDesc, Template } from './types'
 export default class Card {
     element: HTMLElement;
     cardObj: CardDesc | undefined;
-    card: string | undefined;
+    card?: string | undefined;
     notation: string | undefined;
     cardTemplate: Template | undefined
 

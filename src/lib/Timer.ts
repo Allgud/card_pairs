@@ -43,4 +43,12 @@ export default class Timer {
             this.secEl.textContent = `0${this.seconds}`
         }
     }
+
+    getMinutes() {
+        return this.minutes > 9 ? this.minutes.toString() : `0${this.minutes}`
+    }
+
+    getSeconds() {
+        return this.seconds > 9 ? this.seconds.toString() : `0${this.seconds}`
+    }
 }
