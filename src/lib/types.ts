@@ -1,18 +1,18 @@
-import Timer from './Timer'
+import Timer from "./Timer"
 
 export type App = {
     renderScreen: Function,
     level?: string,
     currentCard?: string | '',
     interval?: number,
-    timer?: Timer | undefined
+    timer?: Timer
 }
 
 export type Config = {
     fn: Array<Function> 
 }
 
-export type Template = {
+export type HtmlElementTemplate = {
     tag: string,
     classNames: string[],
     attrs?: {

@@ -119,11 +119,10 @@ function createTimer() {
 function handleTimer(str: string) {
     if (str === 'start') {
         application.timer?.start()
+        return
     }
 
-    if (str === 'stop') {
-        application.timer?.stop()
-    }
+    application.timer?.stop()
 }
 
 function checkAllCards(field: HTMLElement) {

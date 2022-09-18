@@ -1,8 +1,8 @@
 import { templateEngine } from './template-engine'
-import { Template, Config, App } from './types'
+import { HtmlElementTemplate, Config, App } from './types'
 
 const application: App = {
-    renderScreen: function (block: HTMLElement, template: Template, config: Config): void {
+    renderScreen: function (block: HTMLElement, template: HtmlElementTemplate, config: Config): void {
         block.textContent = ''
         block.appendChild(templateEngine(template))
 

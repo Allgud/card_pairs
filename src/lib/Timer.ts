@@ -3,7 +3,7 @@ export default class Timer {
     secEl: HTMLElement;
     minutes: number;
     seconds: number;
-    interval: NodeJS.Timer | undefined
+    interval?: NodeJS.Timer
 
     constructor(minutesEl: HTMLElement, secondsEl: HTMLElement) {
         this.minEl = minutesEl

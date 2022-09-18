@@ -1,12 +1,12 @@
 import { templateEngine } from './template-engine';
-import { CardDesc, Template } from './types'
+import { CardDesc, HtmlElementTemplate } from './types'
 
 export default class Card {
     element: HTMLElement;
     cardObj: CardDesc | undefined;
     src?: string | undefined;
     notation: string | undefined;
-    cardTemplate: Template | undefined
+    cardTemplate: HtmlElementTemplate | undefined
 
     constructor( element: HTMLElement, cardObj: CardDesc){
         this.element = element

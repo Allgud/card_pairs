@@ -1,6 +1,6 @@
-import { Template } from './types'
+import { HtmlElementTemplate } from './types'
 
-export const levelTemplate: Template = {
+export const levelTemplate: HtmlElementTemplate = {
     tag: 'div',
     classNames: ['level__choice'],
     content: [
@@ -59,7 +59,7 @@ export const levelTemplate: Template = {
     ],
 }
 
-export const gameTemplate: Template = {
+export const gameTemplate: HtmlElementTemplate = {
     tag: 'div',
     classNames: ['gamescreen'],
     content: [
@@ -104,7 +104,7 @@ export const gameTemplate: Template = {
     ],
 }
 
-export const finalScreenTemplate: Template = {
+export const finalScreenTemplate: HtmlElementTemplate = {
     tag: 'div',
     classNames: ['final__screen'],
     content: [
