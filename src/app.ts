@@ -69,7 +69,7 @@ function cardsCompare(card: HTMLElement) {
         handleTimer('stop')
         setTimeout(() => {
             app.appendChild(templateEngine(createFinalTemplate('lose')))
-            restartBtnClick()
+            restartBtnClick('new-game')
         }, 500)
     }
 }
@@ -80,6 +80,7 @@ function dealCards() {
     const randomNumbers = getRandomNumbersArray(number.cards / 2)
 
     checkLevel(cardsField, number.cards)
+    restartBtnClick('same-level')
     randomNumbers.forEach((num: number) => {
         const newCard = new Card(cardsField, cards[num])
         newCard.render()
@@ -134,7 +135,7 @@ function checkAllCards(field: HTMLElement) {
         application.timer?.stop()
         setTimeout(() => {
             app.appendChild(templateEngine(createFinalTemplate('win')))
-            restartBtnClick()
+            restartBtnClick('new-game')
         }, 800)
     }
 }
@@ -158,9 +159,19 @@ function createFinalTemplate(status: string) {
     return template
 }
 
-function restartBtnClick() {
-    const restartBtn = app.querySelector('.final__btn')
-    restartBtn?.addEventListener('click', () => {
-        application.renderScreen(app, gameTemplate, gameConfig)
-    })
+function restartBtnClick(restartFlag: string) {
+    const restartBtns = app.querySelectorAll('.btn__restart')
+
+    for(let i=0; i<restartBtns.length; i++) {
+        restartBtns[i].addEventListener('click', () => {
+            if(restartFlag === 'same-level') {  
+                application.renderScreen(app, gameTemplate, gameConfig)
+            }
+    
+            if(restartFlag === 'new-game') {
+                application.renderScreen(app, levelTemplate, levelConfig)
+            }
+        })
+    }
+    
 }

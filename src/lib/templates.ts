@@ -140,7 +140,7 @@ export const finalScreenTemplate: Template = {
                 },
                 {
                     tag: 'button',
-                    classNames: ['btn', 'final__btn'],
+                    classNames: ['btn', 'btn__restart'],
                     content: 'Играть снова',
                 }
             ]
