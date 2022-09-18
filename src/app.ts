@@ -13,7 +13,7 @@ import Card from './lib/Card'
 import Timer from './lib/Timer'
 import { templateEngine } from './lib/template-engine'
 
-const app = document.querySelector('.app')
+const app = document.querySelector('.app') as HTMLElement
 
 window.addEventListener('DOMContentLoaded', () => {
     application.renderScreen(app, levelTemplate, levelConfig)
@@ -28,14 +28,15 @@ const gameConfig = {
 }
 
 function levelListener() {
-    const levelList = document.querySelector('.level__list')
-    const startBtn = document.querySelector('.btn')
+    const levelList = document.querySelector('.level__list') as HTMLElement
+    const startBtn = document.querySelector('.btn') as HTMLElement
 
-    levelList.addEventListener('click', ({ target }) => {
-        levelList.childNodes.forEach((el) => {
-            el.classList.remove('active')
-        })
-        target.parentNode.classList.add('active')
+    levelList?.addEventListener('click', (event) => {
+        const target = (event.target as HTMLElement)
+        for (let i=0; i<levelList.children.length; i++) {
+            levelList.children[i].classList.remove('active')
+        }
+        target.parentElement?.classList.add('active')
         application.level = target.dataset.value
     })
 
@@ -44,7 +45,7 @@ function levelListener() {
     })
 }
 
-function cardsCompare(card) {
+function cardsCompare(card: HTMLElement) {
     card.classList.add('card--open')
     const currentCard = card.dataset.note
 
@@ -74,23 +75,26 @@ function cardsCompare(card) {
 }
 
 function dealCards() {
-    const cardsField = document.querySelector('.cards__field')
-    const number = difficultLevel[application.level]
+    const cardsField = document.querySelector('.cards__field') as HTMLElement
+    const number = difficultLevel[application.level!]
     const randomNumbers = getRandomNumbersArray(number.cards / 2)
 
     checkLevel(cardsField, number.cards)
-    randomNumbers.forEach((num) => {
+    randomNumbers.forEach((num: number) => {
         const newCard = new Card(cardsField, cards[num])
         newCard.render()
     })
-    cardsField.addEventListener('click', ({ target }) => {
-        cardsCompare(target.parentNode)
-        checkAllCards(cardsField)
+    cardsField.addEventListener('click', (event) => {
+        const target = (event.target as HTMLElement).parentElement
+        if(target?.classList.value === 'card'){
+            cardsCompare(target!)
+            checkAllCards(cardsField)
+        }; 
     })
 }
 
 function showCards() {
-    const allCards = document.querySelectorAll('.card')
+    const allCards = document.querySelectorAll('.card') as NodeListOf<HTMLDivElement>
 
     allCards.forEach((card) => card.classList.add('card--open'))
     setTimeout(() => {
@@ -99,34 +103,35 @@ function showCards() {
     }, 5000)
 }
 
-function hideCards(arr) {
+function hideCards(arr: NodeListOf<HTMLDivElement>) {
     arr.forEach((item) => item.classList.remove('card--open'))
 }
 
 function createTimer() {
-    const minutesEl = document.querySelector('.timer__minutes')
-    const secondsEl = document.querySelector('.timer__seconds')
+    const minutesEl = document.querySelector('.timer__minutes') as HTMLElement
+    const secondsEl = document.querySelector('.timer__seconds') as HTMLElement
 
     const timer = new Timer(minutesEl, secondsEl)
     application.timer = timer
 }
 
-function handleTimer(string) {
-    if (string === 'start') {
-        application.timer.start()
+function handleTimer(str: string) {
+    if (str === 'start') {
+        application.timer?.start()
     }
 
-    if (string === 'stop') {
-        application.timer.stop()
+    if (str === 'stop') {
+        application.timer?.stop()
     }
 }
 
-function checkAllCards(field) {
+function checkAllCards(field: HTMLElement) {
     const allFixedCards = field.querySelectorAll('.card--fixed')
-    const { cards } = difficultLevel[application.level]
+    const level = application.level !== undefined ? application.level : ''
+    const { cards } = difficultLevel[level]
 
     if (allFixedCards.length === cards) {
-        application.timer.stop()
+        application.timer?.stop()
         setTimeout(() => {
             app.appendChild(templateEngine(createFinalTemplate('win')))
             restartBtnClick()
@@ -134,12 +139,12 @@ function checkAllCards(field) {
     }
 }
 
-function createFinalTemplate(status) {
+function createFinalTemplate(status: string) {
     const gamescreen = document.querySelector('.gamescreen')
     const props = resultData[status]
     const template = finalScreenTemplate
     const { timer } = application
-    const time = `${timer.getMinutes()}.${timer.getSeconds()}`
+    const time = `${timer?.getMinutes()}.${timer?.getSeconds()}`
 
     template.content[0].content[0].attrs = {
         src: props.src,
@@ -148,14 +153,14 @@ function createFinalTemplate(status) {
     template.content[0].content[1].content = props.content
     template.content[0].content[2].content[1].content = time
 
-    gamescreen.classList.add('opacity')
+    gamescreen?.classList.add('opacity')
 
     return template
 }
 
 function restartBtnClick() {
     const restartBtn = app.querySelector('.final__btn')
-    restartBtn.addEventListener('click', () => {
+    restartBtn?.addEventListener('click', () => {
         application.renderScreen(app, gameTemplate, gameConfig)
     })
 }

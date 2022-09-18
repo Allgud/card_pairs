@@ -1,11 +1,11 @@
-import Card from './Card'
+import Timer from './Timer'
 
 export type App = {
     renderScreen: Function,
-    level?: string | ''
+    level?: string,
     currentCard?: string | '',
     interval?: number,
-    timer?: Function | undefined
+    timer?: Timer | undefined
 }
 
 export type Config = {
@@ -21,13 +21,7 @@ export type Template = {
         'data-note'?: string,
         'data-value'?: string
     },
-    content: Array<Template> | string
-}
-
-export type Difficult = {
-    easy: { cards: number }
-    medium : { cards: number }
-    hard: { cards: number }
+    content: any
 }
 
 export type CardDesc = {
@@ -35,41 +29,14 @@ export type CardDesc = {
     notation: string
 }
 
-export type Cards = {
-    0: CardDesc,
-    1: CardDesc,
-    2: CardDesc,
-    3: CardDesc,
-    4: CardDesc,
-    5: CardDesc,
-    6: CardDesc,
-    7: CardDesc,
-    8: CardDesc,
-    9: CardDesc,
-    10: CardDesc,
-    11: CardDesc,
-    12: CardDesc,
-    13: CardDesc,
-    14: CardDesc,
-    15: CardDesc,
-    16: CardDesc,
-    17: CardDesc,
-    18: CardDesc,
-    19: CardDesc,
-    20: CardDesc,
-    21: CardDesc,
-    22: CardDesc,
-    23: CardDesc,
-    24: CardDesc,
-    25: CardDesc,
-    26: CardDesc,
-    27: CardDesc,
-    28: CardDesc,
-    29: CardDesc,
-    30: CardDesc,
-    31: CardDesc,
-    32: CardDesc,
-    33: CardDesc,
-    34: CardDesc,
-    35: CardDesc
+export type DifficultMap = {
+    [index: string] : {cards: number}
+}
+
+export type ResultMap = {
+    [index: string] : {
+        src: string,
+        alt: string,
+        content: string
+    }
 }

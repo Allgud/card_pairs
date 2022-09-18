@@ -4,13 +4,13 @@ import { CardDesc, Template } from './types'
 export default class Card {
     element: HTMLElement;
     cardObj: CardDesc | undefined;
-    card?: string | undefined;
+    src?: string | undefined;
     notation: string | undefined;
     cardTemplate: Template | undefined
 
     constructor( element: HTMLElement, cardObj: CardDesc){
         this.element = element
-        this.card = cardObj.src
+        this.src = cardObj.src
         this.notation = cardObj.notation
         this.cardTemplate = {
             tag: 'div',
@@ -36,7 +36,7 @@ export default class Card {
                                     tag: 'img',
                                     classNames: [''],
                                     attrs: {
-                                        src: `${this.card}`,
+                                        src: `${this.src}`,
                                         alt: `${this.notation}`
                                     },
                                     content: ''
