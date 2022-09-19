@@ -7,12 +7,12 @@ const difficultLevel: DifficultMap = {
 }
 
 export const resultData: ResultMap = {
-    'win': {
+    win: {
         src: './assets/win__icon.png',
         alt: 'Победа',
         content: 'Вы победили!'
     },
-    'lose': {
+    lose: {
         src: './assets/lose__icon.png',
         alt: 'Поражение',
         content: 'Вы проиграли!'

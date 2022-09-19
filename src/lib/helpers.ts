@@ -1,9 +1,9 @@
 import difficultLevel from './constants'
 
-const cardsCount: number = 36
+const MAX_CARD_COUNT: number = 36 as const
 
 function createArray(): number[] {
-    return Array(cardsCount)
+    return Array(MAX_CARD_COUNT)
         .join('0')
         .split('0')
         .map((_, i) => i + 1)

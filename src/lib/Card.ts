@@ -3,7 +3,7 @@ import { CardDesc, HtmlElementTemplate } from './types'
 
 export default class Card {
     element: HTMLElement;
-    cardObj: CardDesc | undefined;
+    cardObj?: CardDesc;
     src?: string | undefined;
     notation: string | undefined;
     cardTemplate: HtmlElementTemplate | undefined
