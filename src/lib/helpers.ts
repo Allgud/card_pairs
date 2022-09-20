@@ -6,7 +6,7 @@ function createArray(): number[] {
     return Array(MAX_CARD_COUNT)
         .join('0')
         .split('0')
-        .map((_, i) => i + 1)
+        .map((_, i) => i + 1) 
 }
 
 function shuffleArray(arr: number[]): number[] {

@@ -6,7 +6,7 @@ export default class Card {
     cardObj?: CardDesc;
     src?: string | undefined;
     notation: string | undefined;
-    cardTemplate: HtmlElementTemplate | undefined
+    cardTemplate: HtmlElementTemplate;
 
     constructor( element: HTMLElement, cardObj: CardDesc){
         this.element = element

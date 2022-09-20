@@ -1,4 +1,6 @@
-export function templateEngine(block) {
+import { HtmlElementTemplate } from "./types"
+
+export function templateEngine(block: HtmlElementTemplate) {
     if (block === undefined || block === null) {
         return document.createTextNode('')
     }
@@ -22,14 +24,16 @@ export function templateEngine(block) {
     const element = document.createElement(block.tag)
 
     if (block.classNames) {
-        element.classList.add(...[].concat(block.classNames.filter(Boolean)))
+        const cls = block.classNames.filter(Boolean)
+        cls.forEach(el => element.classList.add(el))
     }
 
     if (block.attrs) {
-        const keys = Object.keys(block.attrs)
+        const entries = Object.entries(block.attrs)
 
-        keys.forEach((key) => {
-            element.setAttribute(key, block.attrs[key])
+        entries.forEach((entry) => {
+            const [key, value] = entry
+            element.setAttribute(key, block.attrs ? block.attrs[key] : '')
         })
     }
 

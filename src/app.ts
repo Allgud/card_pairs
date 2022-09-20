@@ -13,7 +13,7 @@ import Card from './lib/Card'
 import Timer from './lib/Timer'
 import { templateEngine } from './lib/template-engine'
 
-const app = document.querySelector('.app') as HTMLElement
+const app = document.querySelector('.app') as HTMLElement 
 
 window.addEventListener('DOMContentLoaded', () => {
     application.renderScreen(app, levelTemplate, levelConfig)

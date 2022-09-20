@@ -16,10 +16,7 @@ export type HtmlElementTemplate = {
     tag: string,
     classNames: string[],
     attrs?: {
-        src?: string,
-        alt?: string,
-        'data-note'?: string,
-        'data-value'?: string
+        [src: string]: string,
     },
     content: any
 }

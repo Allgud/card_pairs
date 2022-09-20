@@ -26,10 +26,10 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "format": "prettier --write ./src/**.*js",
-    "lint:js": "eslint ./src/**/*.js",
+    "format": "prettier --write ./src/**.*ts",
+    "lint:ts": "eslint ./src/**/*.ts",
     "lint:css": "stylelint ./src/**/*.css",
-    "lint": "npm run lint:js",
+    "lint": "npm run lint:ts",
     "prepare": "husky install",
     "build": "cross-env NODE_ENV=production webpack",
     "start": "webpack-dev-server --open"
