@@ -33,7 +33,7 @@ export function templateEngine(block: HtmlElementTemplate) {
 
         entries.forEach((entry) => {
             const [key, value] = entry
-            element.setAttribute(key, block.attrs ? block.attrs[key] : '')
+            element.setAttribute(key, block.attrs ? value : '')
         })
     }
 
