@@ -1,13 +1,15 @@
-const cardsCount = 36
+import difficultLevel from './constants'
 
-function createArray() {
-    return Array(cardsCount)
-        .join(0)
-        .split(0)
-        .map((_, i) => i + 1)
+const MAX_CARD_COUNT: number = 36 as const
+
+function createArray(): number[] {
+    return Array(MAX_CARD_COUNT)
+        .join('0')
+        .split('0')
+        .map((_, i) => i + 1) 
 }
 
-function shuffleArray(arr) {
+function shuffleArray(arr: number[]): number[] {
     const arrCopy = arr.slice(0)
     let j, temp
     for (let i = arrCopy.length - 1; i > 0; i--) {
@@ -19,20 +21,14 @@ function shuffleArray(arr) {
     return arrCopy
 }
 
-export const difficultLevel = {
-    easy: { cards: 6 },
-    medium: { cards: 12 },
-    hard: { cards: 18 },
-}
-
-export function getRandomNumbersArray(number) {
+export function getRandomNumbersArray(number: number): number[] {
     const arr = shuffleArray(createArray())
     const array1 = arr.slice(0, number)
     const doubleArray = array1.concat(array1)
     return shuffleArray(doubleArray)
 }
 
-export function checkLevel(node, num) {
+export function checkLevel(node: HTMLElement, num: number): void {
     const level2 = difficultLevel.medium.cards
 
     num === level2 && node.classList.add('level2')

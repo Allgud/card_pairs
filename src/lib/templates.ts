@@ -1,4 +1,6 @@
-export const levelTemplate = {
+import { HtmlElementTemplate } from './types'
+
+export const levelTemplate: HtmlElementTemplate = {
     tag: 'div',
     classNames: ['level__choice'],
     content: [
@@ -19,7 +21,7 @@ export const levelTemplate = {
                             tag: 'button',
                             classNames: ['level__button'],
                             attrs: { 'data-value': 'easy' },
-                            content: 1,
+                            content: '1',
                         },
                     ],
                 },
@@ -31,7 +33,7 @@ export const levelTemplate = {
                             tag: 'button',
                             classNames: ['level__button'],
                             attrs: { 'data-value': 'medium' },
-                            content: 2,
+                            content: '2',
                         },
                     ],
                 },
@@ -43,7 +45,7 @@ export const levelTemplate = {
                             tag: 'button',
                             classNames: ['level__button'],
                             attrs: { 'data-value': 'hard' },
-                            content: 3,
+                            content: '3',
                         },
                     ],
                 },
@@ -57,7 +59,7 @@ export const levelTemplate = {
     ],
 }
 
-export const gameTemplate = {
+export const gameTemplate: HtmlElementTemplate = {
     tag: 'div',
     classNames: ['gamescreen'],
     content: [
@@ -68,7 +70,18 @@ export const gameTemplate = {
                 {
                     tag: 'div',
                     classNames: ['game__timer'],
-                    content: '00.00',
+                    content: [
+                        {
+                            tag: 'span',
+                            classNames: ['timer__minutes'],
+                            content: '00.'
+                        },
+                        {
+                            tag: 'span',
+                            classNames: ['timer__seconds'],
+                            content: '00'
+                        }
+                    ],
                 },
                 {
                     tag: 'button',
@@ -89,4 +102,49 @@ export const gameTemplate = {
             ],
         },
     ],
+}
+
+export const finalScreenTemplate: HtmlElementTemplate = {
+    tag: 'div',
+    classNames: ['final__screen'],
+    content: [
+        {
+            tag: 'div',
+            classNames: ['final__box'],
+            content: [
+                {
+                    tag: 'img',
+                    classNames: ['final__img'],
+                    content: ''
+                },
+                {
+                    tag: 'h2',
+                    classNames: ['final__title'],
+                    content: 'Вы выиграли!', 
+                },
+                {
+                    tag: 'div',
+                    classNames: ['final__time'],
+                    content: [
+                        {
+                            tag: 'h3',
+                            classNames: ['time__title'],
+                            content: 'Затраченное время:'
+                        },
+                        {
+                            tag: 'div',
+                            classNames: ['final__timer'],
+                            content: '00.00',
+                        }
+                    ]
+                },
+                {
+                    tag: 'button',
+                    classNames: ['btn', 'btn__restart'],
+                    content: 'Играть снова',
+                }
+            ]
+        }
+
+    ]
 }
